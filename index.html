@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofertă Lazart Studios | Mircea Moldovan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #111111;
+      --bg-elevated: #1a1a1a;
+      --cyan: #0cc0df;
+      --cyan-light: #3dd5ef;
+      --cyan-dark: #0891b2;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --border: #2a2a2a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .container { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
+    .header { text-align: center; margin-bottom: 50px; }
+    .lazart-branding { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; }
+    .lazart-logo-img { max-width: 180px; height: auto; }
+    .offer-badge {
+      background: linear-gradient(135deg, var(--cyan-dark) 0%, var(--cyan) 50%, var(--cyan-light) 100%);
+      color: var(--bg-dark);
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .client-info {
+      margin-top: 30px;
+      padding: 25px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .client-label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+    .client-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; }
+    .client-tagline { color: var(--text-secondary); font-size: 1rem; }
+    .divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); margin: 20px auto; }
+
+    .scope-section { margin: 40px 0; }
+    .scope-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .scope-section h2::before { content: '◆'; color: var(--cyan); }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .page-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color .2s;
+    }
+    .page-card:hover { border-color: var(--cyan-dark); }
+    .page-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .page-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: 6px; }
+    .page-card p { font-size: .82rem; color: var(--text-secondary); }
+
+    .ai-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--cyan-dark);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+    .ai-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin-bottom: 14px; }
+    .ai-card .steps { list-style: none; }
+    .ai-card .steps li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .92rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 12px;
+    }
+    .ai-card .steps li:last-child { border-bottom: none; }
+    .ai-card .steps .num {
+      color: var(--cyan);
+      font-weight: 700;
+      min-width: 24px;
+    }
+
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .price-header {
+      background: var(--bg-elevated);
+      padding: 25px 30px;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-header h2 { font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+    .price-header h2::before { content: '◆'; color: var(--cyan); }
+    .price-body { padding: 30px; }
+
+    .base-price {
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, #1f1f1f 100%);
+      border: 1px solid var(--cyan-dark);
+      padding: 25px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .base-price-info { flex: 1; }
+    .base-price-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--cyan); }
+    .base-price-amount { font-size: 2.5rem; font-weight: 700; color: var(--cyan); white-space: nowrap; }
+    .base-price ul {
+      color: var(--text-secondary);
+      font-size: .92rem;
+      margin-top: 10px;
+      padding-left: 18px;
+      line-height: 1.9;
+    }
+
+    .no-addons {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    .total-section {
+      background: linear-gradient(135deg, var(--cyan-dark) 0%, var(--cyan) 50%, var(--cyan-light) 100%);
+      color: var(--bg-dark);
+      padding: 30px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .total-label { font-size: 1.2rem; font-weight: 600; }
+    .total-amount { font-size: 2.5rem; font-weight: 700; }
+
+    .cta-section { margin-top: 20px; text-align: center; }
+    .cta-button {
+      background: transparent;
+      color: var(--cyan);
+      border: 2px solid var(--cyan);
+      padding: 18px 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cta-button:hover {
+      background: var(--cyan);
+      color: var(--bg-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(12, 192, 223, .3);
+    }
+
+    .timeline {
+      display: flex;
+      gap: 12px;
+      margin: 24px 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
+      opacity: .3;
+    }
+    .timeline-step { flex: 1; text-align: center; position: relative; }
+    .timeline-step .dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: 700;
+      font-size: .8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step h4 { font-size: .85rem; margin-bottom: 2px; }
+    .timeline-step p { font-size: .75rem; color: var(--text-muted); }
+
+    .footer { text-align: center; padding: 50px 30px 30px; color: var(--text-muted); font-size: .9rem; }
+    .lazart-footer { font-family: 'Playfair Display', serif; color: var(--cyan); font-size: 1.2rem; margin-bottom: 10px; }
+    .footer a { color: var(--cyan); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .container { padding: 20px 15px; }
+      .lazart-logo-img { max-width: 140px; }
+      .client-name { font-size: 1.5rem; }
+      .base-price { flex-direction: column; }
+      .pages-grid { grid-template-columns: 1fr; }
+      .total-section { flex-direction: column; text-align: center; gap: 10px; }
+      .timeline { flex-direction: column; gap: 16px; }
+      .timeline::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="lazart-branding">
+        <img src="https://cdn.prod.website-files.com/6740c973a1263e8751de88e2/6740c973a1263e8751de8973_lazart_white_transp.avif" alt="Lazart Studios" class="lazart-logo-img">
+        <div class="offer-badge">Ofertă Personalizată</div>
+      </div>
+      <div class="client-info">
+        <div class="client-label">Ofertă pentru</div>
+        <h1 class="client-name">Mircea Moldovan</h1>
+        <p class="client-tagline">Platformă AI Recomandări Produse</p>
+        <div class="divider"></div>
+        <p style="color: var(--text-secondary); font-size: .95rem; max-width: 620px; margin: 0 auto;">
+          Platformă inteligentă cu sistem AI care caută, compară și recomandă cele mai bune produse din multiple feed-uri API, în funcție de căutarea utilizatorului.
+        </p>
+      </div>
+    </header>
+
+    <div class="scope-section">
+      <h2>Structură platformă — 4 pagini</h2>
+      <div class="pages-grid">
+        <div class="page-card">
+          <div class="icon">🏠</div>
+          <h4>Pagina Principală</h4>
+          <p>Landing page cu prezentarea platformei, bara de căutare proeminentă și acces rapid la funcționalități.</p>
+        </div>
+        <div class="page-card">
+          <div class="icon">🔍</div>
+          <h4>Căutare & Rezultate AI</h4>
+          <p>Utilizatorul introduce un produs. AI-ul analizează feed-urile API și returnează cele mai relevante rezultate, comparate și sortate.</p>
+        </div>
+        <div class="page-card">
+          <div class="icon">📦</div>
+          <h4>Pagina Produs</h4>
+          <p>Detalii complete: preț, specificații, link-uri către furnizori și recomandări de produse similare.</p>
+        </div>
+        <div class="page-card">
+          <div class="icon">ℹ️</div>
+          <h4>Despre & Contact</h4>
+          <p>Informații despre platformă, cum funcționează și formular de contact.</p>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <h3>🤖 Sistem AI de Recomandare</h3>
+        <ul class="steps">
+          <li><span class="num">1</span> Utilizatorul caută un produs pe platformă</li>
+          <li><span class="num">2</span> AI-ul interoghează simultan toate feed-urile API conectate</li>
+          <li><span class="num">3</span> Produsele sunt analizate, comparate și sortate după relevanță</li>
+          <li><span class="num">4</span> Utilizatorul primește topul celor mai bune opțiuni cu detalii și link-uri</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-section">
+      <h2>Timeline de livrare</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="dot">1</div>
+          <h4>Discovery</h4>
+          <p>Ziua 1–2</p>
+        </div>
+        <div class="timeline-step">
+          <div class="dot">2</div>
+          <h4>Design</h4>
+          <p>Ziua 3–5</p>
+        </div>
+        <div class="timeline-step">
+          <div class="dot">3</div>
+          <h4>Dezvoltare</h4>
+          <p>Ziua 6–12</p>
+        </div>
+        <div class="timeline-step">
+          <div class="dot">4</div>
+          <h4>Lansare</h4>
+          <p>Ziua 14</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="price-header"><h2>Preț</h2></div>
+      <div class="price-body">
+        <div class="base-price">
+          <div class="base-price-info">
+            <h3>Platformă completă — pachet unic</h3>
+            <ul>
+              <li>4 pagini custom, design responsive</li>
+              <li>Sistem AI de recomandare produse</li>
+              <li>Integrare feed-uri API (multiple surse)</li>
+              <li>Căutare inteligentă cu matching AI</li>
+              <li>Optimizare SEO on-page</li>
+              <li>Deploy și găzduire inclusă</li>
+              <li>Suport 30 zile post-lansare</li>
+            </ul>
+          </div>
+          <div class="base-price-amount">€600</div>
+        </div>
+
+        <div class="no-addons">
+          Fără costuri suplimentare · Fără module extra · Preț fix
+        </div>
+
+        <div class="total-section">
+          <span class="total-label">Total</span>
+          <span class="total-amount">€600</span>
+        </div>
+
+        <div class="cta-section">
+          <a href="mailto:contact@lazart.ro?subject=Accept ofertă - Platformă AI Mircea Moldovan" class="cta-button">
+            <span>Accept Oferta</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="lazart-footer">Lazart Studios</div>
+      <p>Web Design & Development Premium</p>
+      <p style="margin-top: 15px;"><a href="https://lazart.ro" target="_blank">lazart.ro</a> · <a href="https://wa.me/40750210121" target="_blank">WhatsApp</a></p>
+      <p style="margin-top: 20px; font-size: .8rem; color: var(--text-muted);">© 2026 Lazart Studios. Toate drepturile rezervate.</p>
+    </footer>
+  </div>
+</body>
+</html>
